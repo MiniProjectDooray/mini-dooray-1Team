@@ -1,0 +1,22 @@
+###
+POST http://localhost:6060/projects
+Content-Type: application/json
+
+{
+  "projectAdmin": "dongyeol",
+  "name": "dooray",
+  "content": "create"
+}
+
+###
+GET http://localhost:6060/projects/101
+
+###
+GET http://localhost:6060/projects/members/dongyeol
+
+###
+PUT http://localhost:6060/projects/1/terminate
+
+###
+
+PUT http://localhost:6060/projects/1/rest

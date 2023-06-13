@@ -1,0 +1,27 @@
+###
+POST http://localhost:6060/tags
+Content-Type: application/json
+
+{
+  "projectId": 2,
+  "name": "tag123"
+}
+
+###
+GET http://localhost:6060/tags/project/2
+
+
+###
+GET http://localhost:6060/tags/1
+
+###
+PUT http://localhost:6060/tags
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "modify tag"
+}
+
+###
+DELETE http://localhost:6060/tags/8

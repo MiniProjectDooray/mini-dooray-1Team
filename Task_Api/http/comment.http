@@ -1,0 +1,21 @@
+###
+POST http://localhost:6060/comments
+Content-Type: application/json
+
+{
+  "taskId": 3,
+  "username": "dongyeol",
+  "comment": "comment1"
+}
+
+###
+PUT http://localhost:6060/comments
+Content-Type: application/json
+
+{
+  "id": "1",
+  "comment": "comment2"
+}
+
+###
+DELETE http://localhost:6060/comments/1
