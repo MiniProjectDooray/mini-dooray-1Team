@@ -20,6 +20,8 @@ import com.nhnacademy.task_api.dto.milestone.ModifyMilestoneDto;
 import com.nhnacademy.task_api.entity.Milestone;
 import com.nhnacademy.task_api.entity.Project;
 import com.nhnacademy.task_api.service.MilestoneService;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import org.junit.jupiter.api.DisplayName;
@@ -32,7 +34,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(MilestoneController.class)
-public class MilestoneControllerTest {
+class MilestoneControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -46,11 +48,11 @@ public class MilestoneControllerTest {
         CreateMilestoneDto createMilestoneDto = new CreateMilestoneDto();
         ReflectionTestUtils.setField(createMilestoneDto,"projectId",1L);
         ReflectionTestUtils.setField(createMilestoneDto,"name","test milestone name");
-        ReflectionTestUtils.setField(createMilestoneDto,"createdAt", LocalDateTime.now());
+        ReflectionTestUtils.setField(createMilestoneDto,"createdAt", LocalDate.now());
 
         String createMilestoneDtoJson = mapper.writeValueAsString(createMilestoneDto);
 
-        mockMvc.perform(post("/milestones")
+        mockMvc.perform(post("/task/milestones")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(createMilestoneDtoJson))
                 .andExpect(status().isCreated());
@@ -61,7 +63,7 @@ public class MilestoneControllerTest {
         Long projectId = 1L;
         when(milestoneService.findMilestoneByProjectId(projectId)).thenReturn(new ArrayList<>());
 
-        mockMvc.perform(get("/milestones/project/{projectId}",projectId)
+        mockMvc.perform(get("/task/milestones/project/{projectId}",projectId)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
@@ -75,7 +77,7 @@ public class MilestoneControllerTest {
 
         when(milestoneService.findMilestone(id)).thenReturn(milestoneDto);
 
-        mockMvc.perform(get("/milestones/{id}",id)
+        mockMvc.perform(get("/task/milestones/{id}",id)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -86,13 +88,13 @@ public class MilestoneControllerTest {
         ModifyMilestoneDto modifyMilestoneDto = new ModifyMilestoneDto();
         ReflectionTestUtils.setField(modifyMilestoneDto,"id",1L);
         ReflectionTestUtils.setField(modifyMilestoneDto,"name","test milestone name");
-        ReflectionTestUtils.setField(modifyMilestoneDto,"createdAt",LocalDateTime.now());
+        ReflectionTestUtils.setField(modifyMilestoneDto,"createdAt",LocalDate.now());
 
         String modifyMilestoneDtoJson = mapper.writeValueAsString(modifyMilestoneDto);
 
         doNothing().when(milestoneService).modifyMilestone(any(ModifyMilestoneDto.class));
 
-        mockMvc.perform(put("/milestones")
+        mockMvc.perform(put("/task/milestones")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(modifyMilestoneDtoJson))
                 .andExpect(status().isOk())
@@ -103,7 +105,7 @@ public class MilestoneControllerTest {
     void testDeleteMilestone() throws Exception{
         doNothing().when(milestoneService).deleteMilestone(anyLong());
 
-        mockMvc.perform(delete("/milestones/{id}",1L))
+        mockMvc.perform(delete("/task/milestones/{id}",1L))
                 .andExpect(status().isNoContent());
     }
 }

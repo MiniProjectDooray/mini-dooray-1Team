@@ -18,9 +18,9 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 
 @Slf4j
 @Configuration
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity
 @RequiredArgsConstructor
-public class SecurityConfig {;
+public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

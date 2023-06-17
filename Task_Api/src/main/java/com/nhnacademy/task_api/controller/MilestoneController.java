@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/milestones")
+@RequestMapping("/task/milestones")
 public class MilestoneController {
 
     private final MilestoneService milestoneService;

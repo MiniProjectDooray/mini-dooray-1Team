@@ -4,7 +4,6 @@ import com.nhnacademy.account_api.dto.UserDto;
 import com.nhnacademy.account_api.dto.UserIdLoginDto;
 import com.nhnacademy.account_api.dto.UserSignUpDto;
 import com.nhnacademy.account_api.entity.User;
-import com.nhnacademy.account_api.entity.UserStatus;
 import com.nhnacademy.account_api.exception.UserEmailNotFoundException;
 import com.nhnacademy.account_api.exception.UserIdDuplicationException;
 import com.nhnacademy.account_api.exception.UserNotFoundException;

@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 @RequiredArgsConstructor
 public class CommentAdapter {
 
-    private static final String COMMENT = "/comments";
+    private static final String COMMENT = "/task/comments";
 
     private final RestTemplate restTemplate;
 

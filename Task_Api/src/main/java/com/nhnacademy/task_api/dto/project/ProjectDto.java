@@ -2,15 +2,12 @@ package com.nhnacademy.task_api.dto.project;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nhnacademy.task_api.entity.Project;
-import com.querydsl.core.annotations.QueryProjection;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @NoArgsConstructor
-@Setter
 @ToString
 @AllArgsConstructor
 public class ProjectDto {
@@ -19,8 +16,8 @@ public class ProjectDto {
     private String name;
     private String status;
     private String projectAdmin;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime startDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate startDate;
 
     public ProjectDto(Project project) {
         this.id = project.getId();

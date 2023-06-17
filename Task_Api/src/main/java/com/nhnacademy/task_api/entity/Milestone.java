@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "Milestones")
@@ -18,7 +18,7 @@ public class Milestone {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
     private Project project;
 
@@ -26,12 +26,12 @@ public class Milestone {
     private String name;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
 
     public Milestone(Project project, CreateMilestoneDto milestoneDto) {
         this.project = project;
         this.name = milestoneDto.getName();
-        this.createdAt = LocalDateTime.now();
+        this.createdAt = LocalDate.now();
     }
 
     public void modifyMilestone(ModifyMilestoneDto modifyMilestone) {

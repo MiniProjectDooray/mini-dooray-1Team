@@ -18,7 +18,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "task_id", nullable = false)
     private Task task;
 
@@ -31,6 +31,9 @@ public class Comment {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
+    @Column(name = "modified_at")
+    private LocalDateTime modifiedAt;
+
     public Comment(Task task, CreateCommentDto commentDto) {
         this.task = task;
         this.registerId = commentDto.getRegisterId();
@@ -40,6 +43,6 @@ public class Comment {
 
     public void modifyComment(ModifyCommentDto modifyComment) {
         this.content = modifyComment.getContent();
-        this.createdAt = LocalDateTime.now();
+        this.modifiedAt = LocalDateTime.now();
     }
 }

@@ -1,6 +1,5 @@
 package com.nhnacademy.task_api.entity;
 
-import com.nhnacademy.task_api.dto.tag.ModifyTagDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -16,7 +15,7 @@ public class Tag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
     private Project project;
 

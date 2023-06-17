@@ -4,17 +4,21 @@ import com.nhnacademy.task_api.entity.Project;
 import com.nhnacademy.task_api.entity.ProjectStatus;
 import com.nhnacademy.task_api.entity.Tag;
 import com.nhnacademy.task_api.repository.project.ProjectRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.util.ReflectionTestUtils;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+
+@Slf4j
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class TagRepositoryTest {
@@ -29,12 +33,11 @@ class TagRepositoryTest {
     void findTagsByProject_Id() {
         Project project = new Project();
 
-        ReflectionTestUtils.setField(project, "id", 1L);
         ReflectionTestUtils.setField(project, "name", "ProjectName");
         ReflectionTestUtils.setField(project, "projectAdmin", "admin");
         ReflectionTestUtils.setField(project, "status", ProjectStatus.ACTIVE);
         ReflectionTestUtils.setField(project, "content", "Project Content");
-        ReflectionTestUtils.setField(project, "startDate", LocalDateTime.now());
+        ReflectionTestUtils.setField(project, "startDate", LocalDate.now());
 
         Project savedProject = projectRepository.save(project);
 
@@ -52,7 +55,7 @@ class TagRepositoryTest {
         List<Tag> tag = tagRepository.findTagsByProject_Id(savedProject.getId());
 
         tag.forEach(t -> assertThat(t.getProject().getId()).isEqualTo(project.getId()));
-        assertThat(tag.size()). isEqualTo(11);
+        assertThat(tag).hasSize(10);
 
 
     }

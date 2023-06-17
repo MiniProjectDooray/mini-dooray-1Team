@@ -13,5 +13,5 @@ public class MilestoneDto {
     private Long id;
     private Long projectId;
     private String name;
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
 }

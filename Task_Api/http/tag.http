@@ -1,27 +1,26 @@
-###
-POST http://localhost:6060/tags
+### 태그 생성
+POST http://localhost:6060/task/tags
 Content-Type: application/json
 
 {
-  "projectId": 2,
-  "name": "tag123"
+  "projectId": 1,
+  "name": "marcotag"
 }
 
-###
-GET http://localhost:6060/tags/project/2
+### 프로젝트에 속한 태그 조회
+GET http://localhost:6060/task/tags/project/1
 
+### 태그 조회
+GET http://localhost:6060/task/tags/1
 
-###
-GET http://localhost:6060/tags/1
-
-###
-PUT http://localhost:6060/tags
+### 태그 수정
+PUT http://localhost:6060/task/tags
 Content-Type: application/json
 
 {
-  "id": 1,
-  "name": "modify tag"
+  "id": 4,
+  "name": "modifytag"
 }
 
-###
-DELETE http://localhost:6060/tags/8
+### 태그 삭제
+DELETE http://localhost:6060/task/tags/1

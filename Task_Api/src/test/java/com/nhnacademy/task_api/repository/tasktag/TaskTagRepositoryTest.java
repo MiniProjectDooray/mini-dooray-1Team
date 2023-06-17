@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.util.ReflectionTestUtils;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,12 +43,11 @@ class TaskTagRepositoryTest {
 
         Project project = new Project();
 
-        ReflectionTestUtils.setField(project, "id", 1L);
         ReflectionTestUtils.setField(project, "name", "name");
         ReflectionTestUtils.setField(project, "projectAdmin", "admin");
         ReflectionTestUtils.setField(project, "content", "content");
         ReflectionTestUtils.setField(project, "status", ProjectStatus.ACTIVE);
-        ReflectionTestUtils.setField(project, "startDate", LocalDateTime.now());
+        ReflectionTestUtils.setField(project, "startDate", LocalDate.now());
 
         Project savedProject = projectRepository.save(project);
 
@@ -60,10 +60,9 @@ class TaskTagRepositoryTest {
         }
 
         Milestone milestone = new Milestone();
-        ReflectionTestUtils.setField(milestone, "id", 1L);
         ReflectionTestUtils.setField(milestone, "project", savedProject);
         ReflectionTestUtils.setField(milestone, "name", "milestoneName " + 1);
-        ReflectionTestUtils.setField(milestone, "createdAt", LocalDateTime.now());
+        ReflectionTestUtils.setField(milestone, "createdAt", LocalDate.now());
         milestoneRepository.save(milestone);
 
         List<Tag> savedTag = tagRepository.saveAll(tagList);

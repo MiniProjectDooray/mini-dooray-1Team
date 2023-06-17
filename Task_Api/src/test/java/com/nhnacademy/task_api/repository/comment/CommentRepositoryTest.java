@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.util.ReflectionTestUtils;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -36,19 +37,17 @@ class CommentRepositoryTest {
         Project project = new Project();
         Milestone milestone = new Milestone();
 
-        ReflectionTestUtils.setField(project, "id", 1L);
         ReflectionTestUtils.setField(project, "name", "ProjectName");
         ReflectionTestUtils.setField(project, "projectAdmin", "admin");
         ReflectionTestUtils.setField(project, "status", ProjectStatus.ACTIVE);
         ReflectionTestUtils.setField(project, "content", "Project Content");
-        ReflectionTestUtils.setField(project, "startDate", LocalDateTime.now());
+        ReflectionTestUtils.setField(project, "startDate", LocalDate.now());
 
         projectRepository.save(project);
 
-        ReflectionTestUtils.setField(milestone, "id", 1L);
         ReflectionTestUtils.setField(milestone, "project", project);
         ReflectionTestUtils.setField(milestone, "name", "milestoneName " + 1);
-        ReflectionTestUtils.setField(milestone, "createdAt", LocalDateTime.now());
+        ReflectionTestUtils.setField(milestone, "createdAt", LocalDate.now());
         milestoneRepository.save(milestone);
 
         ReflectionTestUtils.setField(task, "project", project);
@@ -62,7 +61,6 @@ class CommentRepositoryTest {
         taskRepository.save(task);
 
 
-        ReflectionTestUtils.setField(comment, "id", 1L);
         ReflectionTestUtils.setField(comment, "task", task);
         ReflectionTestUtils.setField(comment, "registerId", "12345");
         ReflectionTestUtils.setField(comment, "content", "comment content");

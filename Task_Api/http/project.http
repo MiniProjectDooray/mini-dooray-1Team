@@ -1,22 +1,18 @@
-###
-POST http://localhost:6060/projects
+### 프로젝트 생성
+POST http://localhost:6060/task/projects
 Content-Type: application/json
 
 {
-  "projectAdmin": "dongyeol",
-  "name": "dooray",
-  "content": "create"
+  "projectAdmin": "marco",
+  "name": "Project",
+  "content": "Good Marco"
 }
 
-###
-GET http://localhost:6060/projects/101
+### 해당 프로젝트 조회
+GET http://localhost:6060/task/projects/1
 
-###
-GET http://localhost:6060/projects/members/dongyeol
+### 해당 프로젝트에 멤버 조회
+GET http://localhost:6060/task/projects/members/marco
 
-###
-PUT http://localhost:6060/projects/1/terminate
-
-###
-
-PUT http://localhost:6060/projects/1/rest
+### 프로젝트 상태 종료 처리
+PUT http://localhost:6060/task/projects/1/terminate

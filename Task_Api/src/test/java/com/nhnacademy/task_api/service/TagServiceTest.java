@@ -21,6 +21,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class TagServiceTest {
+class TagServiceTest {
 
     @InjectMocks
     private TagServiceImpl tagService;
@@ -70,7 +71,7 @@ public class TagServiceTest {
         ReflectionTestUtils.setField(project, "id", projectId);
         ReflectionTestUtils.setField(project, "projectAdmin", "marco");
         ReflectionTestUtils.setField(project, "status", ProjectStatus.REST);
-        ReflectionTestUtils.setField(project, "startDate", LocalDateTime.now());
+        ReflectionTestUtils.setField(project, "startDate", LocalDate.now());
 
         List<Tag> list = new ArrayList<>();
 
@@ -85,7 +86,7 @@ public class TagServiceTest {
 
         List<TagDto> tags = tagService.findTagByProjectId(projectId);
 
-        assertThat(tags.size()).isEqualTo(10);
+        assertThat(tags).hasSize(10);
     }
 
     @Test

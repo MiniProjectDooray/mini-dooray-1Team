@@ -25,8 +25,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
+
 @WebMvcTest(ProjectController.class)
-public class ProjectControllerTest {
+class ProjectControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -41,7 +42,7 @@ public class ProjectControllerTest {
         ReflectionTestUtils.setField(createdProjectDto,"name","project1");
         ReflectionTestUtils.setField(createdProjectDto,"content","testcontents");
         String createdProjectDtoJson = mapper.writeValueAsString(createdProjectDto);
-        mockMvc.perform(post("/projects")
+        mockMvc.perform(post("/task/projects")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(createdProjectDtoJson))
                 .andExpect(status().isCreated());
@@ -63,7 +64,7 @@ public class ProjectControllerTest {
         ReflectionTestUtils.setField(addProjectMemberDto,"memberInfoList",memberInfoList);
         String addProjectMemberDtoJson = mapper.writeValueAsString(addProjectMemberDto);
 
-        mockMvc.perform(post("/projects/members")
+        mockMvc.perform(post("/task/projects/members")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(addProjectMemberDtoJson))
                 .andExpect(status().isCreated())
@@ -79,7 +80,7 @@ public class ProjectControllerTest {
     void testProjectByMemberId() throws Exception{
         when(projectService.findProjectByUserId(anyString())).thenReturn(new ArrayList<>());
 
-        mockMvc.perform(get("/projects/members/{userId}","marco")
+        mockMvc.perform(get("/task/projects/members/{userId}","marco")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -89,7 +90,7 @@ public class ProjectControllerTest {
     @DisplayName("프로젝트 종료시키기")
     void testChangeToTerminateProject() throws Exception{
         doNothing().when(projectService).changeToTerminateProject(anyLong());
-        mockMvc.perform(put("/projects/{id}/terminate",1L))
+        mockMvc.perform(put("/task/projects/{id}/terminate",1L))
                 .andExpect(status().isOk());
     }
 
@@ -97,7 +98,7 @@ public class ProjectControllerTest {
     @DisplayName("프로젝트 휴면")
     void testChangeToRestProject() throws Exception{
         doNothing().when(projectService).changeToRestProject(anyLong());
-        mockMvc.perform(put("/projects/{id}/rest",1L))
+        mockMvc.perform(put("/task/projects/{id}/rest",1L))
                 .andExpect(status().isOk());
     }
 }

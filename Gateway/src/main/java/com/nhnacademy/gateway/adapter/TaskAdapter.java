@@ -22,7 +22,7 @@ import static org.springframework.http.HttpMethod.GET;
 @RequiredArgsConstructor
 public class TaskAdapter {
 
-    private static final String TASKS = "/tasks";
+    private static final String TASKS = "/task/tasks";
     private static final String REQUEST_URL = BASE_URL + TASKS;
     private final RestTemplate restTemplate;
 

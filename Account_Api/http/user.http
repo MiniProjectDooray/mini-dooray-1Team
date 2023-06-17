@@ -1,5 +1,5 @@
 ###
-POST http://localhost:7070/users/signup
+POST http://localhost:7070/account/users/signup
 Content-Type: application/json
 
 {
@@ -9,10 +9,10 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:7070/users
+GET http://localhost:7070/account/users
 
 ###
-POST http://localhost:7070/users/login
+POST http://localhost:7070/account/users/login
 Content-Type: application/json
 
 {
@@ -20,15 +20,15 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:7070/users/changeStatusLeave/1
+PUT http://localhost:7070/account/users/changeStatusLeave/1
 
 ###
-PUT http://localhost:7070/users/changeStatusRest/1
+PUT http://localhost:7070/account/users/changeStatusRest/1
 
 ###
-POST http://localhost:7070/users/email
+POST http://localhost:7070/account/users/email
 Content-Type: application/json
 
 {
-  "userEmail": "jewan8821@naver.com"
+  "userEmail": "marco@nhnacademy.com"
 }

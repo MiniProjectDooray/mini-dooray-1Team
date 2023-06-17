@@ -1,6 +1,6 @@
 package com.nhnacademy.task_api.dto.milestone;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 public class ModifyMilestoneDto {
     private Long id;
     private String name;
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
 }

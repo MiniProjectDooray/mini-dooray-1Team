@@ -5,22 +5,15 @@ import com.nhnacademy.account_api.dto.UserDto;
 import com.nhnacademy.account_api.dto.UserIdLoginDto;
 import com.nhnacademy.account_api.dto.UserSignUpDto;
 import com.nhnacademy.account_api.entity.User;
-import com.nhnacademy.account_api.repository.UserRepository;
 import com.nhnacademy.account_api.service.UserService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.List;
-
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doNothing;
@@ -30,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(UserController.class)
-public class UserControllerTest {
+class UserControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -56,7 +49,7 @@ public class UserControllerTest {
 
         doNothing().when(userService).doSignUp(signUp);
 
-        mockMvc.perform(post("/users/signup")
+        mockMvc.perform(post("/account/users/signup")
                 .contentType(APPLICATION_JSON)
                 .content(mapper.writeValueAsString(signUp)))
                 .andExpect(status().isCreated())
@@ -77,7 +70,7 @@ public class UserControllerTest {
         given(userService.doLogin(any()))
                 .willReturn(actual);
 
-        mockMvc.perform(post("/users/login")
+        mockMvc.perform(post("/account/users/login")
                 .contentType(APPLICATION_JSON)
                 .accept(APPLICATION_JSON)
                 .content(mapper.writeValueAsString(userLogin)))

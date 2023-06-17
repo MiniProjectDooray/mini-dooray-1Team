@@ -20,7 +20,7 @@ import static org.springframework.http.HttpMethod.GET;
 @RequiredArgsConstructor
 public class MilestoneAdapter {
 
-    private static final String MILESTONE = "/milestones";
+    private static final String MILESTONE = "/task/milestones";
     private static final String REQUEST_URL = BASE_URL + MILESTONE;
 
     private final RestTemplate restTemplate;

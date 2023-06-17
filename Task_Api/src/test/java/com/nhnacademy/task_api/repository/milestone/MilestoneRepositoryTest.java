@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.util.ReflectionTestUtils;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,7 @@ class MilestoneRepositoryTest {
         ReflectionTestUtils.setField(project, "projectAdmin", "admin");
         ReflectionTestUtils.setField(project, "status", ProjectStatus.ACTIVE);
         ReflectionTestUtils.setField(project, "content", "Project Content");
-        ReflectionTestUtils.setField(project, "startDate", LocalDateTime.now());
+        ReflectionTestUtils.setField(project, "startDate", LocalDate.now());
 
         Project savedProject = projectRepository.save(project);
 
@@ -46,10 +47,10 @@ class MilestoneRepositoryTest {
 
         for(int i = 1; i < 11; i++) {
             Milestone milestone = new Milestone();
-            ReflectionTestUtils.setField(milestone, "id", Long.valueOf(i));
+            ReflectionTestUtils.setField(milestone, "id", (long) i);
             ReflectionTestUtils.setField(milestone, "project", savedProject);
             ReflectionTestUtils.setField(milestone, "name", "milestoneName " + i);
-            ReflectionTestUtils.setField(milestone, "createdAt", LocalDateTime.now());
+            ReflectionTestUtils.setField(milestone, "createdAt", LocalDate.now());
             milestoneList.add(milestone);
         }
 

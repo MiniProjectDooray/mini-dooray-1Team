@@ -1,31 +1,31 @@
-###
-POST http://localhost:6060/tasks
+### 업무 생성
+POST http://localhost:6060/task/tasks
 Content-Type: application/json
 
 {
   "projectId": 1,
-  "title": "project title",
-  "content": "project content",
-  "registrantName": "dongyeol"
+  "milestoneId": 1,
+  "title": "Task Create",
+  "content": "Task GOOD",
+  "registerId": "marco"
 }
 
-###
-GET http://localhost:6060/tasks/6
+### 해당 업무 조회
+GET http://localhost:6060/task/tasks/1
 
+### 프로젝트에 속한 업무 목록 조회
+GET http://localhost:6060/task/tasks/project/1
 
-###
-GET http://localhost:6060/tasks/project/1
-
-
-###
-PUT http://localhost:6060/tasks
+### 업무 수정
+PUT http://localhost:6060/task/tasks
 Content-Type: application/json
 
 {
-  "taskId": 6,
-  "title": "modify title",
-  "content": "modify content"
+  "taskId": 1,
+  "milestoneId" : 1,
+  "title" : "marcoman",
+  "content" : "marcoboy"
 }
 
-###
-DELETE http://localhost:6060/tasks/6
+### 업무 삭제
+DELETE http://localhost:6060/task/tasks/1

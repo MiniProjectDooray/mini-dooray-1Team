@@ -1,13 +1,11 @@
 package com.nhnacademy.account_api.repository;
 
 import com.nhnacademy.account_api.entity.User;
-import com.nhnacademy.account_api.entity.UserStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 
@@ -16,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @DataJpaTest
-public class UserRepositoryTest {
+class UserRepositoryTest {
 
     @Autowired
     private UserRepository userRepository;
@@ -72,7 +70,7 @@ public class UserRepositoryTest {
                 .userEmail("marco1@nhnacademy.com")
                 .build();
         User savedUser = userRepository.save(user);
-        savedUser.setStatus(UserStatus.REST);
+        savedUser.changeRestUser();
 
         User testUser = userRepository.findById(savedUser.getId()).get();
         assertThat(savedUser.getStatus()).isEqualTo(testUser.getStatus());
@@ -86,7 +84,7 @@ public class UserRepositoryTest {
                 .userEmail("marco1@nhnacademy.com")
                 .build();
         User savedUser = userRepository.save(user);
-        savedUser.setStatus(UserStatus.LEAVE);
+        savedUser.changeLeaveUser();
 
         User testUser = userRepository.findById(savedUser.getId()).get();
         assertThat(savedUser.getStatus()).isEqualTo(testUser.getStatus());

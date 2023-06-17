@@ -4,10 +4,11 @@ import com.nhnacademy.task_api.dto.task.CreateTaskDto;
 import com.nhnacademy.task_api.dto.task.ModifyTaskDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.context.annotation.Primary;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Tasks")
@@ -19,11 +20,11 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "milestone_id")
     private Milestone milestone;
 
@@ -40,6 +41,9 @@ public class Task {
     private LocalDateTime createdAt;
 
     private LocalDateTime deadline;
+
+    @OneToMany(mappedBy = "task", cascade = CascadeType.REMOVE)
+    private List<Comment> comments = new ArrayList<>();
 
     public Task(Project project, Milestone milestone, CreateTaskDto taskDto) {
         this.project = project;

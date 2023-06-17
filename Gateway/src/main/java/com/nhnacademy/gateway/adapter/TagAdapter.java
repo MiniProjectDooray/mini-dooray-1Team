@@ -20,7 +20,7 @@ import static org.springframework.http.HttpMethod.GET;
 @RequiredArgsConstructor
 public class TagAdapter {
 
-    private static final String TAGS = "/tags";
+    private static final String TAGS = "/task/tags";
     private static final String REQUEST_URL = BASE_URL + TAGS;
     private final RestTemplate restTemplate;
 

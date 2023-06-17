@@ -26,7 +26,7 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 @RequiredArgsConstructor
 public class UserService {
 
-    private static final String BASE_URL = "http://localhost:7070";
+    private static final String BASE_URL = "http://localhost:8282";
 
     private final RestTemplate restTemplate;
 
@@ -41,7 +41,7 @@ public class UserService {
 
         HttpEntity<UserSignUpDto> httpEntity = new HttpEntity<>(signUp, headers);
 
-        ResponseEntity<Void> exchange = restTemplate.exchange(BASE_URL + "/users/signup", POST, httpEntity, Void.class);
+        ResponseEntity<Void> exchange = restTemplate.exchange(BASE_URL + "/account/users/signup", POST, httpEntity, Void.class);
 
         if (Objects.equals(exchange.getStatusCode(), BAD_REQUEST)) {
             throw new SignupFailException();
@@ -57,7 +57,7 @@ public class UserService {
 
         HttpEntity<Void> httpEntity = new HttpEntity<>(headers);
 
-        ResponseEntity<List<UserDto>> exchange = restTemplate.exchange(BASE_URL + "/users", GET, httpEntity, new ParameterizedTypeReference<>() {});
+        ResponseEntity<List<UserDto>> exchange = restTemplate.exchange(BASE_URL + "/account/users", GET, httpEntity, new ParameterizedTypeReference<>() {});
 
         return exchange.getBody();
     }

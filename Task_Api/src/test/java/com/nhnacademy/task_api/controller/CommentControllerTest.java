@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 @WebMvcTest(CommentController.class)
-public class CommentControllerTest {
+class CommentControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -34,7 +34,7 @@ public class CommentControllerTest {
 
         String createCommentDtoJson = mapper.writeValueAsString(createCommentDto);
 
-        mockMvc.perform(post("/comments")
+        mockMvc.perform(post("/task/comments")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(createCommentDtoJson))
                 .andExpect(status().isCreated());
@@ -48,7 +48,7 @@ public class CommentControllerTest {
 
         String modifyCommentDtoJson = mapper.writeValueAsString(modifyCommentDto);
 
-        mockMvc.perform(put("/comments")
+        mockMvc.perform(put("/task/comments")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(modifyCommentDtoJson))
                 .andExpect(status().isCreated());
@@ -58,7 +58,7 @@ public class CommentControllerTest {
     void testDeleteComment() throws Exception{
         Long commentId = 1L;
 
-        mockMvc.perform(delete("/comments/{id}",commentId))
+        mockMvc.perform(delete("/task/comments/{id}",commentId))
                 .andExpect(status().isNoContent());
     }
 }

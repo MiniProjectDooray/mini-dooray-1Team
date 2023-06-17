@@ -25,13 +25,13 @@ import static org.springframework.http.HttpMethod.POST;
 @RequiredArgsConstructor
 public class CustomUserDetailService implements UserDetailsService {
 
-    private static final String BASE_URL = "http://localhost:7070";
+    private static final String BASE_URL = "http://localhost:8282";
 
     private final RestTemplate restTemplate;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        final String PATH = "/users/login";
+        final String PATH = "/account/users/login";
 
         UserLoginDto userLogin = new UserLoginDto(username);
 

@@ -1,16 +1,13 @@
 package com.nhnacademy.account_api.dto;
 
 import com.nhnacademy.account_api.entity.User;
-import com.nhnacademy.account_api.entity.UserStatus;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @NoArgsConstructor
 @Getter
+@ToString
 public class UserDto {
     private Long id;
 

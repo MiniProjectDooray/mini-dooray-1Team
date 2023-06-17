@@ -6,8 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.List;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "Projects")
@@ -34,14 +33,14 @@ public class Project {
     private String content;
 
     @Column(name = "start_date", nullable = false)
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
     public Project(CreatedProjectDto createdProject) {
         this.name = createdProject.getName();
         this.projectAdmin = createdProject.getProjectAdmin();
         this.status = ProjectStatus.ACTIVE;
         this.content = createdProject.getContent();
-        this.startDate = LocalDateTime.now();
+        this.startDate = LocalDate.now();
     }
 
     public void changeTerminateProject() {

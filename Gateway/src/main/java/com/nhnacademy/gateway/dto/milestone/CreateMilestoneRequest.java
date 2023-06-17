@@ -5,7 +5,7 @@ import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @AllArgsConstructor
@@ -15,5 +15,5 @@ public class CreateMilestoneRequest {
     private Long projectId;
     @NotBlank(message = "마일스톤 이름을 입력해주세요")
     private final String name;
-    private final LocalDateTime createdAt;
+//    private final LocalDate createdAt;
 }

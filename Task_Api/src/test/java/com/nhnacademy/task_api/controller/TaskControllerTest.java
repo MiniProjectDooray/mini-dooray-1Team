@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 @WebMvcTest(TaskController.class)
-public class TaskControllerTest {
+class TaskControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -40,7 +40,7 @@ public class TaskControllerTest {
 
         String createTaskDtoJson = mapper.writeValueAsString(createTaskDto);
 
-        mockMvc.perform(post("/tasks")
+        mockMvc.perform(post("/task/tasks")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(createTaskDtoJson))
                 .andExpect(status().isCreated());
@@ -50,7 +50,7 @@ public class TaskControllerTest {
     void testFindTask() throws Exception {
         Long taskId = 1L;
 
-        mockMvc.perform(get("/tasks/{id}", taskId)
+        mockMvc.perform(get("/task/tasks/{id}", taskId)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
@@ -60,7 +60,7 @@ public class TaskControllerTest {
     void testFindTaskList() throws Exception {
         Long projectId = 1L;
 
-        mockMvc.perform(get("/tasks/project/{projectId}", projectId)
+        mockMvc.perform(get("/task/tasks/project/{projectId}", projectId)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
@@ -75,7 +75,7 @@ public class TaskControllerTest {
 
         String modifyTaskDtoJson = mapper.writeValueAsString(modifyTaskDto);
 
-        mockMvc.perform(put("/tasks")
+        mockMvc.perform(put("/task/tasks")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(modifyTaskDtoJson))
                 .andExpect(status().isCreated())
@@ -86,7 +86,7 @@ public class TaskControllerTest {
     void testDeleteTask() throws Exception {
         Long id = 1L;
 
-        mockMvc.perform(delete("/tasks/{id}",id))
+        mockMvc.perform(delete("/task/tasks/{id}",id))
                 .andExpect(status().isNoContent());
     }
 

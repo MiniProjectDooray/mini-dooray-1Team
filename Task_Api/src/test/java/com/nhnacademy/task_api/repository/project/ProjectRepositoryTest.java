@@ -13,6 +13,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.util.ReflectionTestUtils;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class ProjectRepositoryTest {
             ReflectionTestUtils.setField(project, "projectAdmin", "admin");
             ReflectionTestUtils.setField(project, "content", "content");
             ReflectionTestUtils.setField(project, "status", ProjectStatus.ACTIVE);
-            ReflectionTestUtils.setField(project, "startDate", LocalDateTime.now());
+            ReflectionTestUtils.setField(project, "startDate", LocalDate.now());
 
             Project saveProject = projectRepository.save(project);
 

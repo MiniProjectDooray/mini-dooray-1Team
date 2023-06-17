@@ -24,6 +24,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class TaskServiceTest {
+class TaskServiceTest {
 
     @InjectMocks
     private TaskServiceImpl taskService;
@@ -107,7 +108,7 @@ public class TaskServiceTest {
         ReflectionTestUtils.setField(project, "projectAdmin", "marco");
         ReflectionTestUtils.setField(project, "status", ProjectStatus.ACTIVE);
         ReflectionTestUtils.setField(project, "name", "Project");
-        ReflectionTestUtils.setField(project, "startDate", LocalDateTime.now());
+        ReflectionTestUtils.setField(project, "startDate", LocalDate.now());
 
         List<Task> taskList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
@@ -124,7 +125,7 @@ public class TaskServiceTest {
 
         List<TaskListDto> taskListDtoList = taskService.findTaskByProjectId(projectId);
 
-        assertThat(taskListDtoList.size()).isEqualTo(10);
+        assertThat(taskListDtoList).hasSize(10);
     }
 
     @Test

@@ -4,11 +4,8 @@ import com.nhnacademy.task_api.dto.comment.CommentDto;
 import com.nhnacademy.task_api.dto.milestone.MilestoneDto;
 import com.nhnacademy.task_api.dto.tag.TagDto;
 import com.nhnacademy.task_api.entity.Task;
-import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.core.metrics.StartupStep.Tags;
 
 @Getter
 public class TaskDto {

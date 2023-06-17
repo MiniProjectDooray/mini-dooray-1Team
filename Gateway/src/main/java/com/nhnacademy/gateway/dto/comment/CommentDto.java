@@ -12,8 +12,11 @@ public class CommentDto {
 
     private Long id;
     private String registerId;
-    private String contetn;
+    private String content;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime createdAt;
+
+    @JsonFormat(pattern = "yyy-MM-dd HH:mm")
+    private LocalDateTime modifiedAt;
 }

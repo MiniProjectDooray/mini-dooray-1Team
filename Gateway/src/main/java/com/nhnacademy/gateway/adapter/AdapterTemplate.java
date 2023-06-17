@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AdapterTemplate<R> {
 
-    public static final String BASE_URL = "http://localhost:6060";
+    public static final String BASE_URL = "http://localhost:8282";
 
     public static <V> AdapterTemplate<V> of() {
         return new AdapterTemplate<>();

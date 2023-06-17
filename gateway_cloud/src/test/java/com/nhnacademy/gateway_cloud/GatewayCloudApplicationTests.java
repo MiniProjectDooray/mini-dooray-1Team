@@ -1,10 +1,10 @@
-package com.nhnacademy.account_api;
+package com.nhnacademy.gateway_cloud;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AccountApiApplicationTests {
+class GatewayCloudApplicationTests {
 
     @Test
     void contextLoads() {

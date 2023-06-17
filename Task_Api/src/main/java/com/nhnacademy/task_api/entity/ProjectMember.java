@@ -17,7 +17,7 @@ public class ProjectMember {
     private Pk id;
 
     @MapsId("projectId")
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
     private Project project;
 

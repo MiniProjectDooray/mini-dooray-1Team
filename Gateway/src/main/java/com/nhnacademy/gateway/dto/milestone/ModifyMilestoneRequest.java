@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -14,5 +15,5 @@ public class ModifyMilestoneRequest {
     private Long id;
     @NotNull
     private String name;
-    private LocalDateTime createdAt;
+//    private LocalDate createdAt;
 }

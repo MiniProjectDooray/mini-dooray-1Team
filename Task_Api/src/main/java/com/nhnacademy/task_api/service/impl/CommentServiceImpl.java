@@ -11,9 +11,11 @@ import com.nhnacademy.task_api.repository.task.TaskRepository;
 import com.nhnacademy.task_api.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class CommentServiceImpl implements CommentService {
 
     private final CommentRepository commentRepository;

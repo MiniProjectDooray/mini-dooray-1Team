@@ -24,7 +24,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(TagController.class)
-public class TagControllerTest {
+class TagControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -41,7 +41,7 @@ public class TagControllerTest {
 
         String createTagDtoJson = mapper.writeValueAsString(createTagDto);
 
-        mockMvc.perform(post("/tags")
+        mockMvc.perform(post("/task/tags")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(createTagDtoJson))
                 .andExpect(status().isCreated());
@@ -52,7 +52,7 @@ public class TagControllerTest {
         Long projectId = 1L;
         when(tagService.findTagByProjectId(projectId)).thenReturn(new ArrayList<>());
 
-        mockMvc.perform(get("/tags/project/{projectId}",projectId)
+        mockMvc.perform(get("/task/tags/project/{projectId}",projectId)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -66,7 +66,7 @@ public class TagControllerTest {
 
         String modifyTagDtoJson = mapper.writeValueAsString(modifyTagDto);
 
-        mockMvc.perform(put("/tags")
+        mockMvc.perform(put("/task/tags")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(modifyTagDtoJson))
                 .andExpect(status().isOk());
@@ -77,7 +77,7 @@ public class TagControllerTest {
         Long tagId = 1L;
         doNothing().when(tagService).deleteTag(tagId);
 
-        mockMvc.perform(delete("/tags/{id}",tagId))
+        mockMvc.perform(delete("/task/tags/{id}",tagId))
                 .andExpect(status().isNoContent());
     }
 }

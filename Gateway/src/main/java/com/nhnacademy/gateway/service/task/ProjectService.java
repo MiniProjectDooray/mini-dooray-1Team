@@ -21,11 +21,11 @@ public class ProjectService {
         projectAdapter.createProject(createProjectRequest);
     }
 
-    public List<ProjectDto> findProejctByUserId(final String userId) {
+    public List<ProjectDto> findProjectByUserId(final String userId) {
         return projectAdapter.findProjectList(userId);
     }
 
-    public ProjectDto findProejct(final Long id) {
+    public ProjectDto findProject(final Long id) {
         return projectAdapter.findProject(id);
     }
 

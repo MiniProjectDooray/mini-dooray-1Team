@@ -20,7 +20,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/users")
+@RequestMapping("/account/users")
 public class UserController {
 
     private final UserService userService;

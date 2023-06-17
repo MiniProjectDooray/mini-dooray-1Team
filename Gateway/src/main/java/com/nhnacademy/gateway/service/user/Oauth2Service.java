@@ -49,7 +49,7 @@ public class Oauth2Service {
     @Value("${github.client.secret}")
     private String CLIENT_SECRET;
 
-    private static final String BASE_URL = "http://localhost:7070";
+    private static final String BASE_URL = "http://localhost:8282";
     private static final String TOKEN_REQUEST_URL = "https://github.com/login/oauth/access_token";
     private static final String PROFILE_REQUEST_URL = "https://api.github.com/user";
     private static final String REDIRECT_URL = "http://localhost:8080/login/oauth2/code/github";
@@ -72,7 +72,7 @@ public class Oauth2Service {
     public boolean verifyResidentByEmail(String email, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         log.info("verify email request : {}", email);
 
-        final String PATH = "/users/email";
+        final String PATH = "/account/users/email";
 
         EmailRequest emailRequest = new EmailRequest(email);
 

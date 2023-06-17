@@ -4,7 +4,6 @@ import com.nhnacademy.task_api.dto.tag.CreateTagDto;
 import com.nhnacademy.task_api.dto.tag.ModifyTagDto;
 import com.nhnacademy.task_api.dto.tag.TagDto;
 import com.nhnacademy.task_api.service.TagService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/tags")
+@RequestMapping("/task/tags")
 public class TagController {
 
     private final TagService tagService;

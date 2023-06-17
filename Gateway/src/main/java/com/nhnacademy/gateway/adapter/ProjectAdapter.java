@@ -24,7 +24,7 @@ public class ProjectAdapter {
 
     private static final String REST = "rest";
     private static final String TERMINATE = "terminate";
-    private static final String PROJECTS = "/projects";
+    private static final String PROJECTS = "/task/projects";
     private static final String REQUEST_URL = BASE_URL + PROJECTS;
 
     private final RestTemplate restTemplate;
